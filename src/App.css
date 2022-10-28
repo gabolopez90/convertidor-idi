@@ -1,0 +1,31 @@
+@font-face{
+	font-family: "Nunito";
+	src:  url("../src/assets/fonts/nunito.ttf") format("truetype");
+}
+
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  }
+  .home,
+  .calc{
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  }
+
+  .forma{
+    width: 30%;
+    margin: 200px auto;
+  }
+  
+  .boton{
+    width: 50%;
+    margin: 200px auto;
+  }
