@@ -1,12 +1,9 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
-//const sqlite = require('sqlite-electron')
 const path = require('path');
 const url = require('url');
 var escritorio = app.getPath('desktop');
 const direccion = path.join(escritorio,'/Modulo Contingencia/CREDITO_DB.db')
 
-
-//const direccion = 'D:/Documents and Settings/NM37043/Desktop/Modulo Contingencia/CREDITO_DB.db';
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -16,23 +13,28 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         width: 800, 
         height: 600,
-        webPreferences: {
-            nodeIntegration: true,
-            preload: path.join(__dirname, '/preload.js')
+        webPreferences: {            
+            contextIsolation: true,
+            /*
+            preload: app.isPackaged ? path.join(process.cwd(), 'preload.js') : path.join(__dirname, 'preload.js')
+            */
+            preload: path.join(__dirname, 'preload.js')
         }
     });
 
-    // and load the index.html of the app.    
-
-    const startUrl = process.env.ELECTRON_START_URL || url.format({
-            pathname: path.join(__dirname, '/../build/index.html'),
-            protocol: 'file:',
-            slashes: true
-        });
-    mainWindow.loadURL(startUrl);
+    const appURL = app.isPackaged
+    ? url.format({
+        pathname: path.join(__dirname, "index.html"),
+        protocol: "file:",
+        slashes: true,
+      })
+    : "http://localhost:3000";
+    mainWindow.loadURL(appURL);
 
     // Open the DevTools.
-    mainWindow.webContents.openDevTools();
+        if (!app.isPackaged) {
+            mainWindow.webContents.openDevTools();
+        }
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {

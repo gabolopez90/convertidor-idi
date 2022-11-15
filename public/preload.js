@@ -1,64 +1,32 @@
 const { contextBridge, ipcRenderer } = require('electron');
+const sqlite = require("better-sqlite3")
+
 const db = require('../src/models/idimng.js')
 
 contextBridge.exposeInMainWorld('api', {
   guardar: async (data) => {      
     try {      
       const direccion = await ipcRenderer.invoke('dir');
-      const res = await db.guardar(data,direccion);
-      document.getElementById('respuesta').innerText = 'Output: Datos guardados' ;
+      const res = await db.guardar(data,direccion);      
+      document.getElementById('respuesta').innerHTML ="<div class='alert alert-success text-center'>'Datos guardados con éxito'</div>";
       console.log(res);
-    }catch(err){
-      document.getElementById('respuesta').innerText = 'Output: ' + err;
-    }
-  },
-  leer: async(data) =>{
-    try {            
-      const direccion = await ipcRenderer.invoke('dir');
-      const res = await db.idihoy(data,direccion);
-      document.getElementById('respuesta').innerText = 'Output: ' + res;
-      console.log(res);
-    }catch(err){
-      document.getElementById('respuesta').innerText = 'Output: ' + err;
-      console.log(err);
-    }
-  }
-})
-
-
-
-/*
-window.addEventListener('DOMContentLoaded', async () => {
-  const replaceText = (selector, text) => {
-    const element = document.getElementById(selector)
-    if (element) element.innerText = text
-  }
-  
-  for (const type of ['chrome', 'node', 'electron']) {
-    replaceText(`${type}-version`, process.versions[type])
-  }
-})
-*/
-/*
-contextBridge.exposeInMainWorld('api', {
-  guardar: async (data) => {      
-    try {      
-      const res = await ipcRenderer.invoke('save', data);
-      document.getElementById('respuesta').innerText = 'Output: ' + res;
-      console.log(res);
-    }catch(err){
-      document.getElementById('respuesta').innerText = 'Output: ' + err;
+    }catch(err){      
+      document.getElementById('respuesta').innerHTML ="<div class='alert alert-danger text-center'>'Error: '</div>" + err;
     }
   },
   leer: async() =>{
-    try {            
-      const res = await ipcRenderer.invoke('leer');
-      document.getElementById('respuesta').innerText = 'Output: ' + res;
-      console.log(res);
-    }catch(err){
-      document.getElementById('respuesta').innerText = 'Output: ' + err;
-      console.log(err);
+    try {  
+      const direccion = await ipcRenderer.invoke('dir');
+      const res = await db.idihoy(direccion);
+      document.getElementById('hoy').innerText = res.fecha;
+      document.getElementById('idi').innerText = res.idinuevo;
+      document.getElementById('dolar').innerText = res.dolar;
+      document.getElementById('respuesta').innerHTML = "<div class='alert alert-success text-center'>'Resultado: Leído con éxito'</div>";
+      
+      return res;
+    }catch(err){     
+      document.getElementById('respuesta').innerHTML ="<div class='alert alert-danger text-center'>'Error: '</div>" + err;
+      
     }
   }
 })
-*/

@@ -6,8 +6,6 @@ import './Navbar.css'
 import { IconContext } from "react-icons";
 import icon from '../assets/icon.ico';
 
-console.log(icon);
-
 function Navbar() {
     const [sidebar,setSidebar] = React.useState(true);
 

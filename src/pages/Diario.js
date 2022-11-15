@@ -8,7 +8,7 @@ function Diario() {
     {
       fecha: "",
       dolar:"",
-      idi:""      
+      idi:""
     }
   )
   
@@ -31,7 +31,7 @@ function Diario() {
 
   return (
     <div  className='diario'>      
-      <form className='forma' onSubmit={handleSubmit}>
+      <Form className='forma' onSubmit={handleSubmit}>
         <h1 className='text-center mb-3'><strong>IDI / $</strong></h1> 
 
         <InputGroup className='mb-3'>
@@ -72,12 +72,12 @@ function Diario() {
           />        
         </InputGroup>      
         
-        <InputGroup className="mb-3">
-          <Button type='submit' variant="secondary" className='boton'>Guardar</Button>
+        <InputGroup className="">
+          <Button type='submit' variant="secondary" className='boton my-3'>Guardar</Button>
         </InputGroup>
-
-        <p id="respuesta" className='text-center'></p>          
-      </form>      
+        
+        <div id="respuesta"></div>
+      </Form>      
     </ div>
   )
 }

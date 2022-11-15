@@ -11,8 +11,8 @@
   padding: 0;
   font-family: 'Nunito', sans-serif;
   }
-  .home,
-  .calc{
+  .home
+  {
   display: flex;
   height: 90vh;
   align-items: center;
@@ -27,5 +27,13 @@
   
   .boton{
     width: 50%;
-    margin: 200px auto;
+    margin: auto;
+  }
+
+  .calculadora{
+    margin: 5% 30% 5% 30%;    
+  }
+
+  #respuesta{
+    margin-top: 300px;
   }
