@@ -32,7 +32,7 @@
     "preelectron-pack": "npm run build",
     "postinstall": "electron-builder install-app-deps",
     "rebuild": "electron-rebuild -f -w better-sqlite3",
-    "pack": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js"
+    "pack": "npm run build && electron-builder -w --x64 --ia32 -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
     "extends": [

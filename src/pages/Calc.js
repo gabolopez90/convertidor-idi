@@ -17,8 +17,7 @@ function Calc() {
     setFormData(prevFormData => ({
       ...prevFormData,
       [name]: value
-    }))
-    console.log(formData);
+    }))    
   }
     
   function handleSubmit(event){    
@@ -47,9 +46,7 @@ function Calc() {
     }else{
       document.getElementById("res-1").innerHTML = "<strong>Seleccione un tipo de operación</strong>";
       document.getElementById("res-2").innerHTML = "<strong>Seleccione un tipo de operación</strong>";
-    }
-
-    console.log(formData)
+    }    
   }
 
   return (

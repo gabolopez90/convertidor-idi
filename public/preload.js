@@ -1,7 +1,5 @@
 const { contextBridge, ipcRenderer } = require('electron');
-const sqlite = require("better-sqlite3")
-
-const db = require('../src/models/idimng.js')
+const db = require('./idimng.js')
 
 contextBridge.exposeInMainWorld('api', {
   guardar: async (data) => {      

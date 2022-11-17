@@ -15,27 +15,20 @@ function createWindow() {
         height: 600,
         webPreferences: {            
             contextIsolation: true,
-            /*
-            preload: app.isPackaged ? path.join(process.cwd(), 'preload.js') : path.join(__dirname, 'preload.js')
-            */
             preload: path.join(__dirname, 'preload.js')
         }
     });
 
-    const appURL = app.isPackaged
-    ? url.format({
-        pathname: path.join(__dirname, "index.html"),
-        protocol: "file:",
-        slashes: true,
-      })
-    : "http://localhost:3000";
-    mainWindow.loadURL(appURL);
-
+    const startURL = app.isPackaged 
+    ? `file://${path.join(__dirname, '/index.html')}` 
+    : 'http://localhost:3000'; 
+    mainWindow.loadURL(startURL);
+    
     // Open the DevTools.
         if (!app.isPackaged) {
             mainWindow.webContents.openDevTools();
         }
-
+    mainWindow.maximize();
     // Emitted when the window is closed.
     mainWindow.on('closed', function () {
         // Dereference the window object, usually you would store windows
@@ -73,5 +66,4 @@ app.on('activate', function () {
     }catch(err){
         return err
     }
-  })
-  
+  })  
