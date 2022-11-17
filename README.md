@@ -1,4 +1,4 @@
-![logo_bdv](../../../../../../D:/Documents%20and%20Settings/NM37043/Desktop/Proyectos/idi-calc/src/assets/logonuevo.png)
+![logo_bdv](./src/assets/logonuevo.png)
 
 # Convertidor IDI
 
