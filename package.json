@@ -1,8 +1,8 @@
 {
-  "name": "idi-calc",
+  "name": "Convertidor IDI",
   "author": "Gabriel Lopez",
-  "description": "CRUD con SQLite3 para guardar y leer datos de una BD",
-  "version": "0.1.0",
+  "description": "Guardar y leer IDI y $ de una base de datos local para operativos sin internet",
+  "version": "1.0.0",
   "private": true,
   "main": "public/electron.js",
   "homepage": "./",
@@ -31,7 +31,6 @@
     "electron-pack": "npm run build --em.main=public/electron.js",
     "preelectron-pack": "npm run build",
     "postinstall": "electron-builder install-app-deps",
-    "rebuild": "electron-rebuild -f -w better-sqlite3",
     "pack": "npm run build && electron-builder -w --x64 --ia32 -c.extraMetadata.main=build/electron.js"
   },
   "eslintConfig": {
