@@ -1,5 +1,5 @@
 {
-  "name": "Convertidor IDI",
+  "name": "convertidor-idi",
   "author": "Gabriel Lopez",
   "description": "Guardar y leer IDI y $ de una base de datos local para operativos sin internet",
   "version": "1.0.0",
